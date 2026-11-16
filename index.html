@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedoman & Simulasi ABM 2026 — Dokumentasi Teknis Kemendikdasmen</title>
+    <meta
+      name="description"
+      content="Dokumentasi teknis lengkap Pedoman Pelaksanaan Asesmen Bakat Murid (ABM) Tahun 2026 Kemendikdasmen beserta latihan simulasi interaktif 14 subtes dan analitik skor."
+    />
+    <meta property="og:title" content="Pedoman & Simulasi ABM 2026 — Dokumentasi Teknis Kemendikdasmen" />
+    <meta
+      property="og:description"
+      content="Panduan teknis pelaksanaan Asesmen Bakat Murid (ABM) 2026 untuk SMA, SMK, dan MA lengkap dengan pencarian instan, mode gelap, dan simulasi 14 subtes."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('abm-theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-teal-500/20 selection:text-teal-700 dark:selection:text-teal-300">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
