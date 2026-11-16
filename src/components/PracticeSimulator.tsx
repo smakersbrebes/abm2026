@@ -319,62 +319,83 @@ export const PracticeSimulator: React.FC<PracticeSimulatorProps> = ({
     return (
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Header Banner */}
-        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div className="max-w-2xl space-y-2">
-              <div className="flex items-center gap-2 text-xs text-teal-700 dark:text-teal-400 font-medium">
-                <span>Simulasi Latihan Mandiri</span>
-                <span aria-hidden="true">·</span>
-                <span>Tanpa Login</span>
-                <span aria-hidden="true">·</span>
-                <span>14 Subtes Lengkap</span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 text-balance">
-                Latihan Asesmen Bakat Murid (ABM) 2026
-              </h1>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                Uji kesiapan Anda mengerjakan ke-14 subtes ABM secara berurutan atau per subtes tertentu. Setelah selesai, skor dan grafik analitik 7 rumpun bakat akan ditampilkan secara otomatis.
-              </p>
-            </div>
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden">
+          <div className="relative p-6 sm:p-8 bg-slate-900">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/aistudio/background_fbf6dcfa.jpg`}
+              alt="SMA Negeri 1 Kersana"
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-900/82 to-slate-900/68"
+            />
 
-            <div className="flex flex-wrap items-center gap-3 shrink-0">
-              {savedResult && (
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="max-w-2xl space-y-3">
+                <div className="inline-flex items-center bg-white/95 rounded-xl px-3 py-1.5 shadow-sm max-w-full">
+                  <img
+                    src={`${import.meta.env.BASE_URL}assets/aistudio/Header_f54afaf9.png`}
+                    alt="Logo SMA Negeri 1 Kersana dan Lembaga Pendidikan"
+                    referrerPolicy="no-referrer"
+                    className="h-8 sm:h-10 w-auto object-contain"
+                  />
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-teal-300 font-medium">
+                  <span>SMA Negeri 1 Kersana</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Simulasi Mandiri Tanpa Login</span>
+                  <span aria-hidden="true">·</span>
+                  <span>14 Subtes Lengkap</span>
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white text-balance">
+                  Latihan Asesmen Bakat Murid (ABM) 2026
+                </h1>
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
+                  Uji kesiapan murid kelas XI SMA Negeri 1 Kersana dalam mengerjakan ke-14 subtes ABM secara berurutan atau per subtes tertentu. Setelah selesai, skor dan grafik analitik 7 rumpun bakat akan ditampilkan secara otomatis.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 shrink-0">
+                {savedResult && (
+                  <button
+                    type="button"
+                    onClick={handleLoadSavedResult}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-white/25 bg-slate-950/50 hover:bg-slate-950/75 text-sm font-medium text-white transition-colors whitespace-nowrap cursor-pointer"
+                  >
+                    <BarChart3 className="w-4 h-4" />
+                    Lihat Hasil Terakhir
+                  </button>
+                )}
                 <button
                   type="button"
-                  onClick={handleLoadSavedResult}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors whitespace-nowrap"
+                  onClick={() => handleStart()}
+                  disabled={selectedSubtesIds.length === 0}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-teal-600 hover:bg-teal-500 disabled:opacity-50 text-white text-sm font-semibold transition-colors whitespace-nowrap cursor-pointer"
                 >
-                  <BarChart3 className="w-4 h-4" />
-                  Lihat Hasil Terakhir
+                  <Play className="w-4 h-4" />
+                  Mulai Latihan ({selectedSubtesIds.length} Subtes)
                 </button>
-              )}
-              <button
-                type="button"
-                onClick={() => handleStart()}
-                disabled={selectedSubtesIds.length === 0}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 disabled:opacity-50 text-white text-sm font-semibold transition-colors whitespace-nowrap cursor-pointer"
-              >
-                <Play className="w-4 h-4" />
-                Mulai Latihan ({selectedSubtesIds.length} Subtes)
-              </button>
+              </div>
             </div>
           </div>
 
           {/* Quick Options Row */}
-          <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="p-6 sm:px-8 grid grid-cols-1 md:grid-cols-3 gap-5">
             <div>
               <label
                 htmlFor="participant-name"
                 className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5"
               >
-                Nama Peserta (Opsional, tanpa akun)
+                Nama Peserta / Kelas (Opsional, tanpa akun)
               </label>
               <input
                 id="participant-name"
                 type="text"
                 value={participantName}
                 onChange={(e) => setParticipantName(e.target.value)}
-                placeholder="Contoh: Nadia Kelas XI IPA 2"
+                placeholder="Contoh: Nadia (XI-1 SMAN 1 Kersana)"
                 className="w-full px-3.5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
               />
             </div>

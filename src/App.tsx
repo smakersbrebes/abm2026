@@ -77,7 +77,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-150">
+    <div className="relative min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-150">
+      {/* Subtle ambient campus background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center opacity-[0.045] dark:opacity-[0.06]"
+        style={{
+          backgroundImage: `url('${import.meta.env.BASE_URL}assets/aistudio/background_fbf6dcfa.jpg')`,
+        }}
+      />
+
       {/* Top Bar: 3-Zone Contract (Brand — 4 concise links — 1 primary CTA) */}
       <header className="sticky top-0 z-40 h-14 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-8">
@@ -91,7 +100,7 @@ export default function App() {
             }}
             className="font-display text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50 whitespace-nowrap shrink-0"
           >
-            Pedoman ABM 2026
+            SMAN 1 Kersana · ABM 2026
           </a>
 
           {/* Zone 2: 4 single-line navigation links */}
@@ -175,7 +184,7 @@ export default function App() {
       </header>
 
       {/* Workspace Utility Bar (Instant Search, View Switch, Dark Mode) */}
-      <div className="border-b border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/60">
+      <div className="relative z-10 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/75 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           {/* Instant Search Input */}
           <div className="relative flex-1 max-w-xl">
@@ -262,7 +271,7 @@ export default function App() {
       </div>
 
       {/* Main Content */}
-      <main id="top" className="flex-1">
+      <main id="top" className="relative z-10 flex-1">
         {view === 'docs' ? (
           <DocView
             searchQuery={searchQuery}
@@ -279,10 +288,15 @@ export default function App() {
       </main>
 
       {/* Quiet Editorial Footer */}
-      <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-6 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-          <div>
-            Referensi Resmi: Pedoman Pelaksanaan Asesmen Bakat Murid (ABM) Tahun 2026 — BPPP &amp; Pusmendik Kemendikdasmen.
+      <footer className="relative z-10 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 py-6 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+          <div className="space-y-1">
+            <div className="font-medium text-slate-700 dark:text-slate-300">
+              SMA Negeri 1 Kersana · Kabupaten Brebes — Pedoman ABM 2026 (BPPP &amp; Pusmendik Kemendikdasmen)
+            </div>
+            <div>
+              Developed by <span className="font-semibold text-teal-700 dark:text-teal-400">Creative Team Smakers</span>
+            </div>
           </div>
           <div className="flex items-center gap-5 shrink-0">
             <a
