@@ -286,7 +286,7 @@ export default function App() {
           </div>
           <div className="flex items-center gap-5 shrink-0">
             <a
-              href="/assets/aistudio/PEDOMAN_PELAKSANAAN_ABM_2026_Revisi_1dd73a01.pdf"
+              href={`${import.meta.env.BASE_URL}assets/aistudio/PEDOMAN_PELAKSANAAN_ABM_2026_Revisi_1dd73a01.pdf`}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-slate-900 dark:hover:text-slate-200 underline"

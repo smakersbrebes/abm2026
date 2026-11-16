@@ -159,7 +159,7 @@ export const DocView: React.FC<DocViewProps> = ({
                 Coba Simulasi 14 Subtes
               </button>
               <a
-                href="/assets/aistudio/PEDOMAN_PELAKSANAAN_ABM_2026_Revisi_1dd73a01.pdf"
+                href={`${import.meta.env.BASE_URL}assets/aistudio/PEDOMAN_PELAKSANAAN_ABM_2026_Revisi_1dd73a01.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
